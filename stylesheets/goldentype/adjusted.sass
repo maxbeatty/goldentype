@@ -1,0 +1,32 @@
+@import core
+// Adjusted Equations
+
+// h = $phi - (1 / (2 * $phi)) * (1 - (w / l^2))
+@function golden-adjusted-phi($line-width, $font-size)
+  @return $phi - (1 / (2 * $phi)) * (1 - ($line-width / (($font-size * $phi) * ($font-size * $phi) / $u)))
+
+// adjusted line height (l) given a font size (f) and line width (w)
+@function golden-height-adjusted($line-width, $font-size)
+  @return $font-size * golden-adjusted-phi($line-width, $font-size)
+
+// adjusted line width (w) given a font size (f) and line height (l)
+// w = (f * $phi)^2 * (1 + (2 * $phi)*(26/16 - $phi))
+@function golden-width-adjusted($font-size, $line-height)
+  @return round((($font-size * $phi) * ($font-size * $phi) / $u) * (1 + (2 * $phi) * (($line-height / $font-size) - $phi)))
+
+// returns golden font-size, line-height, and width using adjusted phi where possible
+=golden-text-adjusted($font-size: 0, $line-width: 0)
+  @if $font-size == 0 and $line-width == 0
+    @warn "Need either a font size or content width to begin calculations"
+  @else
+    @if unitless($font-size)
+      $font-size: $font-size * $u
+    @if unitless($line-width)
+      $line-width: $line-width * $u
+    $u: golden-unit($font-size)
+    $f: if($font-size == 0, golden-size($line-width), $font-size)
+    $l: if($line-width == 0, golden-height($f), golden-height-adjusted($line-width, $f))
+    font-size: $f
+    line-height: $l
+    width: if($line-width == 0, golden-width-adjusted($f, $l), $line-width)
+

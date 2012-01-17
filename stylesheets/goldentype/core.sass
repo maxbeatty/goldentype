@@ -1,0 +1,61 @@
+// Golden Ratio Typography
+// http://www.pearsonified.com/2011/12/phi-typography.php
+
+$phi: ((1 + sqrt(5)) / 2)
+// $phi: 1.61803398874989
+// $h: ratio ($phi)
+// $f: font size
+// $l: line height
+// $w: line width
+// $u: default unit
+$u: 1px
+
+// determine unit to divide by to simplify square units (px*px)
+@function golden-unit($val)
+  $unit: unit($val)
+
+  @if $unit == em
+    $u: 1em
+  @else if $unit == pt
+    $u: 1pt
+  @else if $unit == "%"
+    $u: 1%
+
+  @debug $unit $u
+  @return $u
+
+// calculate optimal line height (l) based on font size (f)
+// l = f * h
+@function golden-height($font-size)
+  $h: $font-size * $phi
+  @return round($h)
+
+// calculate optimal line width (w) based on line height (l)
+// w = l ^ 2
+@function golden-width($line-height)
+  @return round($line-height * $line-height / $u)
+
+// calculate optimal font-size (f) based on line width (w)
+// if   w = l ^ 2
+// then w = (f * h)^2
+// then w = f^2 * h^2
+// then w / h^2 = f^2
+// then f = sqrt(w / h^2)
+@function golden-size($line-width)
+  @return round(sqrt($line-width / ($phi * $phi)))
+
+// returns golden font-size, line-height, and width
+=golden-text($font-size: 0, $line-width: 0)
+  @if $font-size == 0 and $line-width == 0
+    @warn "Need either a font size or content width to begin calculations"
+  @else
+    @if unitless($font-size)
+      $font-size: $font-size * $u
+    @if unitless($line-width)
+      $line-width: $line-width * $u
+    $u: golden-unit($font-size)
+    $f: if($font-size == 0, golden-size($line-width), $font-size)
+    $l: golden-height($f)
+    font-size: $f
+    line-height: $l
+    width: if($line-width == 0, golden-width($l), $line-width)

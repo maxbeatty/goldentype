@@ -1,0 +1,51 @@
+Compass Golden Type
+====================
+
+Golden Type applies "Golden Ratio Typography" outlined by @pearsonified
+
+  http://www.pearsonified.com/2011/12/golden-ratio-typography.php
+
+Compass can automatically generate the values his calculator does
+
+  http://www.pearsonified.com/typography/
+
+
+Installation
+============
+
+From the command line:
+
+    (sudo) gem install goldentype
+
+Add to a project:
+
+    // rails: compass.config, other: config.rb
+    require 'goldentype'
+
+    // command line
+    compass install goldentype
+
+Or create a new project:
+
+    compass -r goldentype -f goldentype project_directory
+
+Available Defaults and Mixins
+=============================
+
+Mixins:
+
+* Golden Type using Phi
+
+First argument is font-size. Set to 0 if unknown or if you want to calculate based on content width. Second argument is content width (line-width) which can be ommitted if unknown or if you want to calculate based on content.
+
+If no units are given for either argument, pixels will be used by default.
+
+    golden-type($font-size, $line-width)
+
+* Adjusted Golden Type
+
+Takes same arguments as original. Will used adjusted ratio as outlined in article.
+
+    golden-type-adjusted($font-size, $line-width)
+
+
