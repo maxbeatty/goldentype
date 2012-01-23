@@ -1,9 +1,9 @@
 Gem::Specification.new do |s|
   #Release Specific Information
-  s.version = "1.0.0"
-  s.date = "2012-01-16"
+  s.version = "1.0.1"
+  s.date = Date.today
   # Gem Bookkeeping
-  s.rubygems_version = %q{1.0.0}
+  s.rubygems_version = %q{1.0.1}
   s.add_dependency("compass", [">= 0.11"])
 
   # Gem Details
@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.summary = %q{golden ratio typography for compass}
   s.description = %q{golden ratio typography for compass}
   s.email = "max.beatty@reputation.com"
-  s.homepage = "http://www.reputation.com/"
+  s.homepage = "http://github.com/maxbeatty/goldentype"
 
   # Gem Files
   s.files = %w(README.mkdn)

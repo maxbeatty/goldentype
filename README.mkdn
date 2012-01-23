@@ -10,42 +10,63 @@ Compass can automatically generate the values his calculator does
   http://www.pearsonified.com/typography/
 
 
-Installation
-============
+==Installation
 
-From the command line:
+===From the command line:
 
     (sudo) gem install goldentype
 
-Add to a project:
+===Add to a project:
 
-    // rails: compass.config, other: config.rb
+    // 1. config.rb
     require 'goldentype'
 
-    // command line
+    // 2. command line
     compass install goldentype
 
-Or create a new project:
+    // 3. sass/scss file
+    @import goldentype
 
-    compass -r goldentype -f goldentype project_directory
 
-Available Defaults and Mixins
-=============================
+==Available Defaults and Mixins
 
-Mixins:
+===Defaults:
 
-* Golden Type using Phi
+====_golden-typography.sass
 
-First argument is font-size. Set to 0 if unknown or if you want to calculate based on content width. Second argument is content width (line-width) which can be ommitted if unknown or if you want to calculate based on content.
+    @import goldentype
 
-If no units are given for either argument, pixels will be used by default.
+    $base-font-size: 16px
+    $content-width: 550px
+
+    .goldentype
+      +golden-text($base-font-size, $content-width)
+
+    .goldentype-adjusted
+      +golden-text-adjusted($base-font-size, $content-width)
+
+===Mixins:
+
+====Arguments
+
+* $font-size
+
+Set to 0 if unknown or if you want to calculate based on content width. If no units are given, pixels will be used by default.
+
+    16px
+
+* $line-width
+
+Can be ommitted if unknown or if you want to calculate based on line height. If no units are given, pixels will be used by default.
+
+    550px
+
+====Golden Type using Phi
 
     golden-type($font-size, $line-width)
 
-* Adjusted Golden Type
+====Adjusted Golden Type
 
-Takes same arguments as original. Will used adjusted ratio as outlined in article.
+Uses adjusted ratio as outlined in article.
 
     golden-type-adjusted($font-size, $line-width)
-
-
