@@ -1,14 +1,11 @@
 Compass Golden Type
 ====================
 
-Golden Type applies "Golden Ratio Typography" outlined by @pearsonified
+Golden Type applies ["Golden Ratio Typography"](http://www.pearsonified.com/2011/12/golden-ratio-typography.php) outlined by [@pearsonified](https://github.com/pearsonified). This Compass plugin will generate the values [his calculator does](http://www.pearsonified.com/typography/).
 
-  http://www.pearsonified.com/2011/12/golden-ratio-typography.php
+**As of Compass [0.12.rc.2 (03/11/2012)](http://compass-style.org/CHANGELOG/), `sqrt` is included in the [Math Helpers](http://compass-style.org/reference/compass/helpers/math/#sqrt) which makes installing this plugin unecessary.**
 
-Compass can automatically generate the values his calculator does
-
-  http://www.pearsonified.com/typography/
-
+You can now use the mixins as-is from the [core](https://github.com/maxbeatty/goldentype/blob/master/stylesheets/goldentype/core.sass) and [adjusted](https://github.com/maxbeatty/goldentype/blob/master/stylesheets/goldentype/adjusted.sass) files, but I'm leaving up the documentation for anyone who hasn't or doesn't upgrade to >0.12.rc.2.
 
 ##Installation
 
@@ -18,13 +15,13 @@ Compass can automatically generate the values his calculator does
 
 ###Add to a project:
 
-    // 1. config.rb
+1. add to your config.rb
     require 'goldentype'
-
-    // 2. command line
+    
+2. install via command line
     compass install goldentype
-
-    // 3. sass/scss file
+    
+3. import to sass/scss file
     @import goldentype
 
 
@@ -32,7 +29,7 @@ Compass can automatically generate the values his calculator does
 
 ###Defaults:
 
-####_golden-typography.sass
+####[_golden-typography.sass](https://github.com/maxbeatty/goldentype/blob/master/templates/project/_golden-typography.sass)
 
     @import goldentype
 
@@ -49,24 +46,16 @@ Compass can automatically generate the values his calculator does
 
 ####Arguments
 
-* $font-size
+**$font-size**: Set to 0 if unknown or if you want to calculate based on content width. If no units are given, pixels will be used by default. Defaults to `16px`..
 
-Set to 0 if unknown or if you want to calculate based on content width. If no units are given, pixels will be used by default.
+**$line-width**: Can be ommitted if unknown or if you want to calculate based on line height. If no units are given, pixels will be used by default. Defaults to `550px`.
 
-    16px
+####[Golden Type using Phi](https://github.com/maxbeatty/goldentype/blob/master/stylesheets/goldentype/core.sass)
 
-* $line-width
+    +golden-type($font-size, $line-width)
 
-Can be ommitted if unknown or if you want to calculate based on line height. If no units are given, pixels will be used by default.
-
-    550px
-
-####Golden Type using Phi
-
-    golden-type($font-size, $line-width)
-
-####Adjusted Golden Type
+####[Adjusted Golden Type](https://github.com/maxbeatty/goldentype/blob/master/stylesheets/goldentype/adjusted.sass)
 
 Uses adjusted ratio as outlined in article.
 
-    golden-type-adjusted($font-size, $line-width)
+    +golden-type-adjusted($font-size, $line-width)
