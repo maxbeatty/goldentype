@@ -16,13 +16,16 @@ You can now use the mixins as-is from the [core](https://github.com/maxbeatty/go
 ###Add to a project:
 
 1. add to your config.rb
-    require 'goldentype'
+    
+    `require 'goldentype'`
     
 2. install via command line
-    compass install goldentype
+    
+    `compass install goldentype`
     
 3. import to sass/scss file
-    @import goldentype
+    
+    `@import goldentype`
 
 
 ##Available Defaults and Mixins
