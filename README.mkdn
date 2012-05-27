@@ -55,10 +55,10 @@ You can now use the mixins as-is from the [core](https://github.com/maxbeatty/go
 
 ####[Golden Type using Phi](https://github.com/maxbeatty/goldentype/blob/master/stylesheets/goldentype/core.sass)
 
-    +golden-type($font-size, $line-width)
+    +golden-text($font-size, $line-width)
 
 ####[Adjusted Golden Type](https://github.com/maxbeatty/goldentype/blob/master/stylesheets/goldentype/adjusted.sass)
 
 Uses adjusted ratio as outlined in article.
 
-    +golden-type-adjusted($font-size, $line-width)
+    +golden-text-adjusted($font-size, $line-width)
